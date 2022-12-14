@@ -1,0 +1,9 @@
+{
+    "gpu_ratios": "nvidia-smi | grep Default | awk ' {print $2}'",
+    "gpu_memory_avaiable": "nvidia-smi | grep Default | awk ' {print $9}'",
+    "gpu_memory_total": "nvidia-smi | grep Default | awk ' {print $11}'",
+    "cpu_utils": "top -bn2 | grep Cpu | tail -n1 | sed -e 's/.*, *\\([0-9.]*\\)%* id.*/\\1/' | awk '{print 100-$1}'",
+    "cpu_memory_total": "free -h | awk 'NR==2{print $2}' | grep G",
+    "cpu_memory_avaiable": "free -h | awk 'NR==2{print $7}' | grep G",
+    "disk_memory_avaiable": "df -h | grep /home | awk '{print (1-$5/100)*$4}'"
+}
